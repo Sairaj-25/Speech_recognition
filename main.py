@@ -8,24 +8,20 @@ To use this module -
 
 import speech_recognition as spreg
 
-# setup sampling rate and the data size
-
-sample_rate = 48000
-data_size = 8192
 
 recog = spreg.Recognizer()
 
 recog.energy_threshold = 300
 recog.dynamic_energy_threshold = True
 
-with spreg.Microphone(sample_rate = sample_rate, chunk_size = data_size) as source:
+with spreg.Microphone() as source:
     print("🎤 Calibrating microphone... Please wait") 
     recog.adjust_for_ambient_noise(source, duration=5)
     print("🎤 Tell Something (speak clearly):")
     speech = recog.listen(
         source,
-        timeout=100,
-        phrase_time_limit=100
+        timeout=5,
+        phrase_time_limit=7
     )
 
 try:
