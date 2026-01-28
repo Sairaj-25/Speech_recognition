@@ -29,17 +29,24 @@ API: Google Speech Recognition
 
 📁 Project Structure
 Speech-Recognition/
+
 │
 ├── main.py
+
 ├── README.md
+
 ├── requirements.txt
 
 📦 Installation
+
 1️⃣ Clone the repository
+
 git clone https://github.com/your-username/speech-recognition-python.git
+
 cd speech-recognition-python
 
 2️⃣ Create and activate virtual environment (optional but recommended)
+
 python -m venv .venv
 
 
@@ -53,9 +60,11 @@ Linux / macOS
 source .venv/bin/activate
 
 3️⃣ Install dependencies
+
 pip install SpeechRecognition
 
 Optional (for microphone support)
+
 pip install pyaudio
 
 
@@ -80,11 +89,14 @@ Audio is sent to Google Speech API
 Recognized text is printed on the console
 
 🧠 Sample Output
+
 🎤 Calibrating microphone... Please wait
+
 🎤 Tell Something (speak clearly):
 You said: Hello, how are you?
 
 ⚠️ Common Issues & Solutions
+
 ❌ Unable to recognize the audio
 
 Speak clearly after calibration
