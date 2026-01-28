@@ -28,9 +28,11 @@ PyAudio (optional but recommended)
 API: Google Speech Recognition
 
 📁 Project Structure
+
 Speech-Recognition/
 
 │
+
 ├── main.py
 
 ├── README.md
