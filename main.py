@@ -7,29 +7,47 @@ To use this module -
 """
 
 import speech_recognition as spreg
+import streamlit as st
 
+
+st.set_page_config(page_title='Speech Recognition', page_icon='🎤')
+st.title("Speech Recognition app")
+st.write("Click the button and speak. Your voice will be converted to text.")
 
 recog = spreg.Recognizer()
 
 recog.energy_threshold = 300
 recog.dynamic_energy_threshold = True
 
-with spreg.Microphone() as source:
-    print("🎤 Calibrating microphone... Please wait") 
-    recog.adjust_for_ambient_noise(source, duration=5)
-    print("🎤 Tell Something (speak clearly):")
-    speech = recog.listen(
-        source,
-        timeout=5,
-        phrase_time_limit=7
-    )
 
-try:
-    text = recog.recognize_google(speech, language="en-IN")
-    print("You said: " + text)
+def recognize_speech():
+    with spreg.Microphone() as source:
+        print("🎤 Calibrating microphone... Please wait") 
+        recog.adjust_for_ambient_noise(source, duration=0)
+        print("🎤 Tell Something (speak clearly):")
+        speech = recog.listen(
+            source,
+            timeout=5,
+            phrase_time_limit=7
+        )
 
-except spreg.UnknownValueError:
-    print('Unable to recognize the audio')
+    try:
+        text = recog.recognize_google(speech, language="en-IN")
+        print("you said: ",text)
+        return "You said: ",text
+
+    except spreg.UnknownValueError:
+        print('Unable to recognize the audio')
+        return "Unable to recognize the audio"
     
-except spreg.RequestError as e:
-    print("Request error from Google Speech Recognition service; {}".format(e))
+    except spreg.RequestError as e:
+        print("Request error from Google Speech Recognition service; {}".format(e))
+        return "Request error from Google Speech Recognition service; {}".format(e)
+
+
+
+# Button 
+if st.button("Click & Speak"):
+    result = recognize_speech()
+    st.subheader("📝 Recognized Text:")
+    st.write(result)
