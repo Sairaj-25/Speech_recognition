@@ -127,7 +127,7 @@ Speech clarity
 
 🚀 Future Enhancements
 
-🔁 Continuous listening mode
+🔁 Continuous listening mode // automatic stop after 10sec when speaker stops so no time limit 
 
 🌐 Offline speech recognition (Vosk)
 
